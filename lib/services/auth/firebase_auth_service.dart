@@ -12,13 +12,17 @@ class FirebaseAuthService implements AuthService {
     FirebaseAuth? auth,
     FirebaseFirestore? firestore,
     GoogleSignIn? googleSignIn,
-  })  : _auth = auth ?? FirebaseAuth.instance,
-        _firestore = firestore ?? FirebaseFirestore.instance,
-        _googleSignIn = googleSignIn ?? GoogleSignIn(scopes: <String>['email']);
+  })  : _injectedAuth = auth,
+        _injectedFirestore = firestore,
+        _injectedGoogleSignIn = googleSignIn;
 
-  final FirebaseAuth _auth;
-  final FirebaseFirestore _firestore;
-  final GoogleSignIn _googleSignIn;
+  final FirebaseAuth? _injectedAuth;
+  final FirebaseFirestore? _injectedFirestore;
+  final GoogleSignIn? _injectedGoogleSignIn;
+
+  FirebaseAuth get _auth => _injectedAuth ?? FirebaseAuth.instance;
+  FirebaseFirestore get _firestore => _injectedFirestore ?? FirebaseFirestore.instance;
+  GoogleSignIn get _googleSignIn => _injectedGoogleSignIn ?? GoogleSignIn(scopes: <String>['email']);
 
   CollectionReference<Map<String, dynamic>> get _students =>
       _firestore.collection('students');
