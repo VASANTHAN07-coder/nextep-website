@@ -48,7 +48,9 @@ class ApiService {
     }
 
     if (kIsWeb) {
-      candidates.add('http://localhost:8081');
+      if (kDebugMode) {
+        candidates.add('http://localhost:8081');
+      }
       candidates.add(_cloudRunBaseUrl);
       return candidates;
     }
