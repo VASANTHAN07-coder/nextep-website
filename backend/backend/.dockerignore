@@ -1,0 +1,11 @@
+target/
+.git/
+.gitignore
+.mvn/wrapper/maven-wrapper.jar
+*.log
+*.class
+DbCheck.java
+DbCheck.class
+build_output.txt
+run_error.txt
+db_check_results.txt
