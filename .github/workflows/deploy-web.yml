@@ -26,12 +26,12 @@ jobs:
         run: flutter pub get
 
       - name: Build Web Application
-        run: flutter build web --release --base-href "/"
+        run: flutter build web --release --base-href "/nextep-website/"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build/web
-          # Replace 'nextep.com' with your actual domain name
-          cname: nextep.com 
+          # Uncomment and update the line below ONLY if you are using a custom domain (like nextep.com)
+          # cname: nextep.com 
