@@ -14,6 +14,8 @@ import 'package:guidex/models/recommendation_result.dart';
 
 import 'package:guidex/services/api_service.dart';
 
+import 'package:guidex/firebase_options.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
@@ -22,7 +24,9 @@ Future<void> main() async {
 
   try {
     if (Firebase.apps.isEmpty) {
-      await Firebase.initializeApp().timeout(const Duration(seconds: 5));
+      await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform,
+      ).timeout(const Duration(seconds: 5));
     }
   } catch (e) {
     debugPrint('Firebase initialization failed or timed out: $e');
